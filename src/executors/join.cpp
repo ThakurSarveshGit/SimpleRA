@@ -63,8 +63,17 @@ bool semanticParseJOIN()
     return true;
 }
 
+/*
+ * Theta Join: Cross
+ */
 void executeJOIN()
 {
     logger.log("executeJOIN");
+//    Table table = *tableCatalogue.getTable(parsedQuery.selectionRelationName);
+//    Table* resultantTable = new Table(parsedQuery.selectionResultRelationName, table.columns);
+//    Cursor cursor = table.getCursor();
+//    vector<int> row = cursor.getNext();
+//
+
     return;
 }

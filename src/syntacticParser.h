@@ -1,6 +1,15 @@
 #include "tableCatalogue.h"
+#include "matrixCatalogue.h"
 
 using namespace std;
+
+// For differentiating between matrices and tables.
+enum DataType
+{
+    TABLE,
+    MATRIX,
+    UNKNOWN
+};
 
 enum QueryType
 {
@@ -51,6 +60,7 @@ class ParsedQuery
 
 public:
     QueryType queryType = UNDETERMINED;
+    DataType dataType = UNKNOWN;
 
     string clearRelationName = "";
 

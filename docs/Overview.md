@@ -222,7 +222,7 @@ Syntax
 <new_table_name> <- SELECT <condition> FROM <table_name>
 ```
 
-Where <condition> is of either form
+Where 'condition' is of either form
 ```
 <first_column_name> <bin_op> <second_column_name>
 <first_column_name> <bin_op> <int_literal>
@@ -274,7 +274,7 @@ Syntax
 
 Where <bin_op> means the same as it does in the SELECT operator
 
-- Implicitly assumes <column1> is from <table1> and <column2> if from <table2>
+- Implicitly assumes < column1 > is from < table1 > and < column2 > is from < table2 >
 
 Example: `J <- JOIN A, B ON a == a`
 

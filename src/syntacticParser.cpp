@@ -120,13 +120,13 @@ void ParsedQuery::clear()
  * @brief Checks to see if source file exists. Called when LOAD command is
  * invoked.
  *
- * @param tableName 
+ * @param structName : Name of file which could be either a TABLE or a MATRIX, saved inside data folder in .csv format
  * @return true 
  * @return false 
  */
-bool isFileExists(string tableName)
+bool isFileExists(string structName)
 {
-    string fileName = "../data/" + tableName + ".csv";
+    string fileName = "../data/" + structName + ".csv";
     struct stat buffer;
     return (stat(fileName.c_str(), &buffer) == 0);
 }

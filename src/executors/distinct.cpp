@@ -38,6 +38,37 @@ bool semanticParseDISTINCT()
 
 void executeDISTINCT()
 {
-    logger.log("executeDISTINCT");
-    return;
+    Table table = *tableCatalogue.getTable(parsedQuery.distinctRelationName);
+    Table* resultantTable = new Table(parsedQuery.distinctResultRelationName, table.columns);
+    Cursor cursor = table.getCursor();
+    vector<int> row = cursor.getNext();
+
+    // Get all the rows
+    vector<vector<int>> completeTableVector;
+    while (!row.empty())
+    {
+        completeTableVector.push_back(row);
+        row = cursor.getNext();
+    }
+
+    // Remove duplicates
+    vector<vector<int>> resultantVector;
+    for (auto & i: completeTableVector){
+        auto it = std::find (resultantVector.begin(), resultantVector.end(), i);
+        if (it == resultantVector.end())
+            resultantVector.push_back(i);
+    }
+
+    // Fill in the new Table
+    for (auto & i : resultantVector)
+        resultantTable->writeRow<int>(i);
+
+    // Store in memory
+    if(resultantTable->blockify())
+        tableCatalogue.insertTable(resultantTable);
+    else{
+        cout<<"Empty Table"<<endl;
+        resultantTable->unload();
+        delete resultantTable;
+    }
 }

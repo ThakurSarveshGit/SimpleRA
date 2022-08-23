@@ -115,9 +115,9 @@ void executeSELECTION()
     int secondColumnIndex;
     if (parsedQuery.selectType == COLUMN)
         secondColumnIndex = table.getColumnIndex(parsedQuery.selectionSecondColumnName);
+
     while (!row.empty())
     {
-
         int value1 = row[firstColumnIndex];
         int value2;
         if (parsedQuery.selectType == INT_LITERAL)
